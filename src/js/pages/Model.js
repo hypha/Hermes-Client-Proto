@@ -2,44 +2,41 @@ import React from "react";
 
 import Article from "../components/Article";
 
+import {Sigma, sigInst, NodeShapes, EdgeShapes, RandomizeNodePositions, RelativeSize, LoadJSON} from 'react-sigma';
+
 export default class Model extends React.Component {
   render() {
-    const Articles = [
-      "Some Article",
-      "Some Other Article",
-      "Yet Another Article",
-      "Still More",
-      "Some Article",
-      "Some Other Article",
-      "Yet Another Article",
-      "Still More",
-      "Some Article",
-      "Some Other Article",
-      "Yet Another Article",
-      "Still More",
-    ].map((title, i) => <Article key={i} title={title}/> );
 
-    const adText = [
-      "Ad spot #1",
-      "Ad spot #2",
-      "Ad spot #3",
-      "Ad spot #4",
-      "Ad spot #5",
+    const hintText = [
+      "Hint #1",
+      "Hint #2",
+      "Hint #3",
+      "Hint #4",
+      "Hint #5",
     ];
 
-    const randomAd = adText[Math.round( Math.random() * (adText.length-1) )];
+    const randomHint = hintText[Math.round( Math.random() * (hintText.length-1) )];
     console.log("model");
     return (
       <div>
         <div class="row">
           <div class="col-lg-12">
             <div class="well text-center">
-              {randomAd}
+              {randomHint}
             </div>
           </div>
         </div>
 
-        <div class="row">{Articles}</div>
+        <div class="row">
+          <Sigma renderer="canvas" settings={{labelSize:"fixed", maxNodeSize: 5}} >
+            <EdgeShapes default="arrow"/>
+            <NodeShapes default="def"/>
+            <LoadJSON path ="./data.json">
+              <RelativeSize initialSize={15}/>
+            </LoadJSON>
+          </Sigma>
+        </div>
+
       </div>
     );
   }
