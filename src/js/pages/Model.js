@@ -2,7 +2,7 @@ import React from "react";
 
 import Article from "../components/Article";
 
-import {Sigma, sigInst, NodeShapes, EdgeShapes, RandomizeNodePositions, RelativeSize, LoadJSON} from 'react-sigma';
+import {Sigma, NodeShapes, EdgeShapes, NOverlap, RandomizeNodePositions, RelativeSize, Forcelink, ForceAtlas2, LoadJSON} from 'react-sigma';
 
 export default class Model extends React.Component {
   render() {
@@ -27,12 +27,35 @@ export default class Model extends React.Component {
           </div>
         </div>
 
-        <div class="row">
-          <Sigma renderer="canvas" settings={{labelSize:"fixed", maxNodeSize: 5}} >
-            <EdgeShapes default="arrow"/>
+        <div style={{"height" : "100%"}}>
+          <Sigma renderer="canvas" style={{
+                                           maxWidth:"inherit", height:"700px"
+                                         }}
+                                   settings={{
+                                              hideEdgesOnMove:false,
+                                              animationsTime:3000,
+                                              borderSize: 2,
+                                              singleHover: true,
+                                              defaultLabelHoverColor: "#F00",
+                                              edgeHoverSizeRatio: 2,
+                                              enableEdgeHovering: true,
+                                              drawEdges: true,
+                                              drawEdgeLabels: true,
+                                              minArrowSize: 8,
+                                              defaultLabelColor: "rgb(0,0,65)",
+                                              defaultLabelSize: 20,
+                                              edgeColor: "default",
+                                              defaultEdgeColor: "rgb(40,40,40)",
+                                              sideMargin: 0.5
+                                             }} >
+            <EdgeShapes default="curvedArrow"/>
             <NodeShapes default="def"/>
             <LoadJSON path ="./data.json">
-              <RelativeSize initialSize={15}/>
+              <RandomizeNodePositions>
+                <ForceAtlas2 iterationsPerRender={1} timeout={500}/>
+
+                <RelativeSize initialSize={15}/>
+              </RandomizeNodePositions>
             </LoadJSON>
           </Sigma>
         </div>

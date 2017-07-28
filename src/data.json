@@ -2,41 +2,52 @@
   "nodes": [
     {
       "id": "n0",
-      "label": "A node",
       "x": 0,
       "y": 0,
-      "size": 3
+      "label": "Hair Dryer",
+      "size": 10
     },
     {
       "id": "n1",
-      "label": "Another node",
-      "x": 3,
-      "y": 1,
-      "size": 2
+      "label": "Air Heating System",
+      "size": 8
     },
     {
       "id": "n2",
-      "label": "And a last one",
-      "x": 1,
-      "y": 3,
-      "size": 1
+      "label": "Power and Control System",
+      "size": 8
+    },
+    {
+      "id": "n3",
+      "label": "Blower System",
+      "size": 8
     }
   ],
   "edges": [
     {
       "id": "e0",
-      "source": "n0",
-      "target": "n1"
+      "source": "n1",
+      "target": "n0",
+      "label": "heats air"
     },
     {
       "id": "e1",
-      "source": "n1",
-      "target": "n2"
+      "source": "n2",
+      "target": "n1"
     },
+
     {
       "id": "e2",
       "source": "n2",
-      "target": "n0"
+      "target": "n3",
+      "label": "controls"
+    },
+
+    {
+      "id": "e3",
+      "source": "n3",
+      "target": "n0",
+      "label": "blows air"
     }
   ]
 }
