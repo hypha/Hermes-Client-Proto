@@ -15,6 +15,7 @@
     "babel-preset-stage-0": "^6.3.13",
     "fixed-data-table": "^0.6.4",
     "history": "^1.17.0",
+    "json-loader": "^0.5.7",
     "react": "^15.3.0",
     "react-data-grid": "^2.0.52",
     "react-dom": "^15.3.0",

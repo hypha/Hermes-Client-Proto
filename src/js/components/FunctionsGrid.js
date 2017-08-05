@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDataGrid from 'react-data-grid';
+import FadData from "../../FadData";
 
 
 export default class FunctionsGrid extends React.Component {
@@ -22,7 +23,7 @@ export default class FunctionsGrid extends React.Component {
     Array.prototype.randomElement = function () {
       return this[Math.floor(Math.random() * this.length)]
     };
-    
+
     return {
       dir: [ "<--", "-->" ].randomElement(),
       partner: [ 'hair dryer', 'dish washer' ].randomElement(),
