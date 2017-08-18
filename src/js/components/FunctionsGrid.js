@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDataGrid from 'react-data-grid';
-import FadData from "../../FadData";
+import HermesData from "../components/HermesData";
 
 
 export default class FunctionsGrid extends React.Component {

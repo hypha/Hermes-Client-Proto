@@ -4,6 +4,8 @@
   "description": "",
   "main": "webpack.config.js",
   "dependencies": {
+    "async": "^2.5.0",
+    "axios": "^0.16.2",
     "babel-core": "^6.17.0",
     "babel-loader": "^6.2.0",
     "babel-plugin-add-module-exports": "^0.1.2",
@@ -15,7 +17,7 @@
     "babel-preset-stage-0": "^6.3.13",
     "fixed-data-table": "^0.6.4",
     "history": "^1.17.0",
-    "json-loader": "^0.5.7",
+    "moment": "^2.18.1",
     "react": "^15.3.0",
     "react-data-grid": "^2.0.52",
     "react-dom": "^15.3.0",
