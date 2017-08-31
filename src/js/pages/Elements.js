@@ -1,46 +1,32 @@
 import React from "react";
+import HermesData from "../components/HermesData";
 
-import Article from "../components/Article";
 
-export default class Elements extends React.Component {
+export default class ItemLister extends React.Component {
+	constructor() {
+  	super();
+ 		 this.state={obj:{elements:[]}};
+  }
+
+  componentDidMount() {
+    const d = new HermesData()
+    d.getData().then(function(data){
+       this.setState({obj: data});
+       console.log( this.state.data);
+     }.bind(this));
+
+  }
+
+
   render() {
-    const Articles = [
-      "Some Article",
-      "Some Other Article",
-      "Yet Another Article",
-      "Still More",
-      "Some Article",
-      "Some Other Article",
-      "Yet Another Article",
-      "Still More",
-      "Some Article",
-      "Some Other Article",
-      "Yet Another Article",
-      "Still More",
-    ].map((title, i) => <Article key={i} title={title}/> );
+  	return(
+    	<ul>
+          {this.state.obj.elements.length ?
+          	this.state.obj.elements.map(item=><li key={item.uuid}>{item.name}</li>)
+            : <li>Loading...</li>
+          }
+      </ul>
 
-    const hintText = [
-      "Hint #1",
-      "Hint #2",
-      "Hint #3",
-      "Hint #4",
-      "Hint #5",
-    ];
-
-    const randomHint = hintText[Math.round( Math.random() * (hintText.length-1) )];
-    console.log("elements");
-    return (
-      <div>
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="well text-center">
-              {randomHint}
-            </div>
-          </div>
-        </div>
-
-        <div class="row">{Articles}</div>
-      </div>
-    );
+   )
   }
 }

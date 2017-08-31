@@ -1,38 +1,46 @@
 import React from "react";
 
-export default class ItemLister extends React.Component {
-	constructor() {
-  	super();
- 		 this.state={obj:{elements:[]}};
-  }
+import Article from "../components/Article";
 
-  componentDidMount(){
-  	fetch(`http://olaf:5050/`, {
-
-      method: 'get',
-      dataType: 'jsonp',
-      headers: {
-         'Accept': 'application/json',
-         'Content-Type': 'application/json'
-      }
-    })
- 		.then(response=>response.json())
-    .then(responseData => {console.log(responseData); return responseData;})
-    .then(obj=>this.setState({obj}))
-    .catch(err => {
-        console.log("fetch error" + err);
-    })
-  }
-
+export default class Elements extends React.Component {
   render() {
-  	return(
-    	<ul>
-          {this.state.obj.elements.length ?
-          	this.state.obj.elements.map(item=><li key={item.uuid}>{item.name}</li>)
-            : <li>Loading...</li>
-          }
-      </ul>
+    const Articles = [
+      "Some Article",
+      "Some Other Article",
+      "Yet Another Article",
+      "Still More",
+      "Some Article",
+      "Some Other Article",
+      "Yet Another Article",
+      "Still More",
+      "Some Article",
+      "Some Other Article",
+      "Yet Another Article",
+      "Still More",
+    ].map((title, i) => <Article key={i} title={title}/> );
 
-   )
+    const hintText = [
+      "Hint #1",
+      "Hint #2",
+      "Hint #3",
+      "Hint #4",
+      "Hint #5",
+    ];
+
+    const randomHint = hintText[Math.round( Math.random() * (hintText.length-1) )];
+    console.log("elements");
+    return (
+      <div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="well text-center">
+              {randomHint}
+            </div>
+          </div>
+        </div>
+
+        <div class="row">{Articles}</div>
+      </div>
+    );
   }
 }

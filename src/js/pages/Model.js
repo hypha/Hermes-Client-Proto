@@ -3,7 +3,7 @@ import React from "react";
 import {Sigma, NodeShapes, EdgeShapes, NOverlap, Filter, RandomizeNodePositions, RelativeSize, Forcelink, ForceAtlas2, LoadJSON} from 'react-sigma';
 
 import HermesData from "../components/HermesData";
-import HermesSigma from "../components/HermesSigma";
+import SigmaLoader from "../components/SigmaLoader";
 import moment from 'moment';
 
 export default class Model extends React.Component {
@@ -13,8 +13,11 @@ export default class Model extends React.Component {
 
   }
 
+// if we want to use the arrow function but still want to console log,
+// please refer to https://stackoverflow.com/questions/41533660/how-to-console-log-this-function
   componentDidMount() {
-    HermesData().then(function(data){
+    const d = new HermesData()
+    d.getSigma().then(function(data){
        this.setState({sigmaData: data.sigma});
        console.log( this.state.sigmaData);
      }.bind(this));
@@ -24,9 +27,6 @@ export default class Model extends React.Component {
 
 
   render() {
-
-
-
     const hintText = [
       "Hint #1",
       "Hint #2",
@@ -42,7 +42,6 @@ export default class Model extends React.Component {
       sigma: {
          maxWidth:"inherit",
         height:"700px",
-        width: '100%',
       }
     };
 
@@ -66,6 +65,8 @@ export default class Model extends React.Component {
       sideMargin: 0.5}
     };
 
+    console.log(moment().valueOf());
+
     return (
       <div>
         <div class="row">
@@ -83,16 +84,16 @@ export default class Model extends React.Component {
 
                                     onClickNode={ e => this.setState({selectedNode: e.data.node.id}) }
                                     onClickStage={ e => this.setState({selectedNode: null}) }>
-            <HermesSigma graph={this.state.sigmaData}>
+            <SigmaLoader graph={this.state.sigmaData}>
 
             <EdgeShapes default="curvedArrow"/>
             <NodeShapes default="def"/>
             <RandomizeNodePositions key={moment().valueOf()}>
               <Filter neighborsOf={ this.state.selectedNode } />
-              <ForceAtlas2 iterationsPerRender={1} timeout={5000}/>
+              <ForceAtlas2 iterationsPerRender={1} timeout={1000}/>
               <RelativeSize initialSize={8}/>
             </RandomizeNodePositions>
-          </HermesSigma>
+          </SigmaLoader>
 
           </Sigma>
         </div>

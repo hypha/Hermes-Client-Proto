@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class HermesSigma extends React.PureComponent {
+export default class SigmaLoader extends React.PureComponent {
 
   constructor(props) {
     super(props)
