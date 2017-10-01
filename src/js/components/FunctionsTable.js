@@ -1,5 +1,9 @@
 import React from 'react';
-import {Table, Column, Cell} from 'fixed-data-table';
+import {Table, Column, Cell} from 'fixed-data-table-2';
+import HermesData from "./HermesData";
+
+import 'fixed-data-table-2/dist/fixed-data-table.min.css';
+
 
 
 
@@ -15,8 +19,37 @@ class TextCell extends React.Component {
   }
 }
 
-
-
+// class MyTable extends React.Component {
+//   constructor(props) {
+//       super(props);
+//       this.state = {
+//       obj:  {functions: {from: "", to: ""}},
+//       data: {}
+//   }
+//     };
+//
+//
+// componentDidMount() {
+//   const d = new HermesData()
+//   d.getData().then(function(data) {
+//      this.setState((prevState, props) => ({obj: d.getFunction(), data: d }));
+//      console.log( this.state.obj);
+//    }.bind(this)
+//  )
+//  }
+//
+// render() {
+//   var {obj} = this.state;
+//
+//         return <Table
+//         rowHeight={70} rowsCount={this.state.d.getSize()} width={1170} height={500} headerHeight={30}>
+//
+//     />
+//     </Table>
+// }
+// }
+//
+//
 class MyTable extends React.Component {
   constructor(props) {
     super(props);
