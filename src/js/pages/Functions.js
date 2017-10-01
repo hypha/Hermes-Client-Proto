@@ -8,7 +8,7 @@ export default class Functions extends React.Component {
   render() {
     return (
       <div>
-        <h1>Functions > User </h1>
+        <h1>Functions > User Yannis </h1>
         <div class="container"> <MyTable /> </div>
       </div>
     );
